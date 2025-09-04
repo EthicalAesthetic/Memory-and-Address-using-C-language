@@ -453,5 +453,5 @@ return 0;
 
 <br><br>
 <footer>
-Hoshiyaar ho : apna compiler likhlo</footer>
+Hoshiyaar ho : apna compiler likhlo</footer><br>
 <b>C python</b>

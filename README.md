@@ -8,11 +8,21 @@ This repository contains C programs that demonstrate how memory and addresses wo
 - [4. Segmentation of memory](#4-segmentation-of-memory)
     - [Offset address meaning](#offset-address-meaning)
     - [Data segments in c language](#data-segments-in-c-language)
-        - [1. Stack area](#1-stack-area-)
-        - [2. Data Area](#2-data-area)
+        - [1. Stack area](#1-stack-area)
+        - [2. Data area](#2-data-area)
         - [3. Heap area](#3-heap-area)
         - [4. Code area](#4-code-area)
-- [5. Data types in c language](#5-data-types-in-c-language)
+- [5. Defining of variable in c](#5-defining-of-variable-in-c)        
+- [6. Name of variable in c](#6-name-of-variable-in-c)
+    - [Identifier naming rules in c](#identifier-naming-rules-in-c)
+- [7. Value of variable in c](#7-value-of-variable-in-c) 
+- [8. Address of variable in c](#8-address-of-variable-in-c)
+- [9. Data types in c language](#9-data-types-in-c-language)
+    - [Size of data types in c](#size-of-data-types-in-c)
+    - [Range of data types in c](#range-of-data-types-in-c)
+
+
+
 
 
 
@@ -161,7 +171,8 @@ return 0;
 }
 ```
 
-## Data segments in c language (64 KB each)
+## Data segments in c language 
+## (64 KB each)
 <img src="Resources/Screenshot 2025-09-03 233008.png">
 
 All the segments are used for specific purpose.<br>
@@ -242,7 +253,7 @@ output which is present in the stack.
 
 <b>NOTE:</b > Default storage class of any local variable is auto
 
-### 2. <u>Data Area</u>
+### 2. <u>Data area</u>
 All the static variables and global variables are stored in the data area. It is permanent memory space and variable will store in the memory usless and until prgogram ends.
 
 #### Example 1
@@ -268,5 +279,179 @@ This memory area is used for dynamic memory allocation. All the memory allocated
 ### 4. <u>Code area</u>
 This memory area is used to store the executable code of the program. It is also permanent memory space and variable will store in the memory unless and until prgogram ends. <i>It's size is fixed for the fixed size of residence memory. (1MB in this case)</i>
 
-## 5. Data types in c language
+# 5. Defining of variable in c
+
+A variable is named location of data. In other word we can variable is container of data.
+
+In real world you have used various type containers for specific purpose. For example you have used suitcase to store clothes, match box to store match sticks etc. In the same way variables of different data type is used to store different types of data. For example integer variables are used to store integers char variables is used to store characters etc. 
+
+On the basis of how many data a variable will store, we can categorize the all c variable in three groups.
+- (a). Variables which can store only one data at time. Example: integer variables, char variables, pointer variables etc.  
+- (b)Variables which can store more than one data of similar type at a time. Example: array variables 
+- (c) Variables, which can store more than one value of dissimilar type at a time. Example: structure or union variables. (user defined data type)
+
+<B><I>Every variable must have three properties. They are:-</I></B>
+1. Name 
+2. Value 
+3. Address
+
+# 6. Name of variable in c
+Every variable in c has its own name. A variable without any name is name is not possible in c. Most important properties of variables name are its unique names. Not two variables in c can have same name with same visibility. There are certain rules to define the name of variable / identifier in c. 
+
+<b>Example</b>
+
+```c
+#include<stdio.h> 
+int main(){ 
+auto int a=5;     // Visibility is within main block 
+static int a=10; // Visibility is within main block  
+/* Two variables of same name */ 
+printf("%d",a); 
+return 0; 
+} 
+```
+<b>Output:</b> Compilation error: redefinition of `a`
+
+But it is possible to define two variables of same name with different visibility.In this case variable name can access only that variable which is more local. In c there is not any way to access the global variable if any local variable is present with same name.
+
+<b>Example </b>
+
+`(a)`
+```c
+#include<stdio.h> 
+int a=50;      //Visibility is whole the program 
+int main(){ 
+int a=10;    //Visibility within main block 
+printf("%d",a); 
+return 0; 
+}  
+```
+<b>Output:</b> 10
+
+<b>Explanation:</b> In the main block two variables of same name are present. So in the main block variable `a` will access the local variable `a`. There is no way to access the global variable `a`.
+
+
+`(b)`
+
+```c
+#include<stdio.h> 
+int main(){ 
+int a=10;              //Visibility within main block. 
+{ 
+a+=5;                //Accessing outer local variable a. 
+int a=20;           //Visibility within inner block. 
+a+=10;             //Accessing inner local variable a.  
+printf(“%d”,a);   //Accessing inner local variable a. 
+} 
+printf(“%d”,a); //Accessing outer local variable a. 
+return 0; 
+}  
+```
+<b>Output:</b> 30 15
+
+<b>Explanation:</b> In the inner block two variables of same name are present. So in the inner block variable `a` will access the inner local variable `a`. In the inner block outer local variable `a` is accessed by using its name only. In the outer block only one variable of name `a` is present. So in the outer block variable `a` will access the outer local variable `a`.
+
+<b>NOTE:</b> In c any name is called identifier. This name can be variable name, function name, enum constant name, micro constant name, goto label name, any other data type name like structure, union, enum(enumeration) names or typedef name. 
+
+## Identifier naming rules in c
+❌ Later❌
+
+# 7. Value of variable in c
+❌ Later❌
+
+# 8. Address of variable in c
+Location in a memory where a variable stores its data or value is known as address of variable. To know address of any variable c has provided a special unary operator & which is known as dereferencing operator or address operator. It operator is only used with variables not with the constant.
+
+
+
+# 9. Data types in c language
 <img height="400px" src="Resources/Screenshot 2025-09-04 003451.png">
+
+## Size of data types in c
+<img src="Resources/Screenshot 2025-09-04 180714.png" height="350px">
+
+## Range of data types in c
+<img src="Resources/Screenshot 2025-09-04 180848.png" height="400px">
+
+<br>
+<b>REMEMBER:</b> 
+
+- Port numbers = 0 to 65535 (2^16 -1) <br>
+- ASCII code = 0 to 255 (2^8 -1) <br>
+- Unicode = 0 to 65535 (2^16 -1) <br>
+- Mac address = 0 to 2^48 -1 <br>
+- IPv4 address = 0 to 2^32 -1 <br>
+- IPv6 address = 0 to 2^128 -1 
+
+# 10. Pointers
+Pointer is a variable which stores the address of another variable.
+
+In TURBO C there are three types of pointers. TURBO C works under DOS operating system which is based on 8085 microprocessor.
+
+## A. Near pointer
+Near pointer is a pointer of size 16 bits. It can access only offset address of the variable. It can access only 64 KB memory on data segment. It is used to access only those variables which are present in the stack area.
+
+
+<img src="Resources/Screenshot 2025-09-04 192459.png">
+
+Near pointer cannot access beyond the data segment like graphics video memory, text video memory etc. It has access within the Data segment <b><i>Size of near pointer is two byte.</i></b> With help keyword near, we can make any pointer as near pointer.
+
+<b>Example</b>
+
+`(a)`
+
+```c
+#include<stdio.h> 
+int main(){ 
+int x=25; 
+int near* ptr; 
+ptr=&x; 
+printf(“%d”,sizeof(ptr)); 
+return 0; 
+}
+```
+<b>Output:</b> 2
+
+<b>Explanation:</b> In the above program pointer `ptr` is declared as near pointer. So size of pointer `ptr` is 2 byte.
+
+`(b)`
+
+```c
+#include<stdio.h> 
+int main(){ 
+int near* near * ptr; 
+printf(“%d”,sizeof(ptr),sizeof(*ptr)); 
+return 0; 
+}
+```
+<b>Output:</b> 2 2
+
+<b>Explanation:</b> In the above program pointer `ptr` is declared as near pointer to near pointer. So size of pointer `ptr` is 2 byte and size of value at pointer `ptr` is also 2 byte. Near pointer only hold 16 bit offset address. Offset address varies from 0000 
+to FFFF (in hexadecimal).
+
+<b>NOTE:</b> In printf statement to print the offset address in hexadecimal, `%p` is used.
+
+`(c)`
+
+```c
+Example: 
+#include<stdio.h> 
+int main(){ 
+int i=10; 
+int *ptr=&i; 
+printf("%p",ptr); 
+return 0; 
+} 
+```
+<b>Output:</b> 0x5ff0 (may be any address within 0x0000 to 0xFFFF)
+
+<b>Explanation:</b> In the above program pointer `ptr` is declared as default pointer. Default storage class of pointer is near. So size of pointer `ptr` is 2 byte. Address of variable `i` is stored in the pointer `ptr`. Address of variable `i` is within 0x0000 to 0xFFFF.
+
+### Note:
+1. Size of near pointer = 2 byte = size of int (in 16 bits compiler)
+2. Size of value at near pointer = size of int = 4 byte (in 32 bits compiler)
+
+<br><br>
+<footer>
+Hoshiyaar ho : apna compiler likhlo</footer>
+<b>C python</b>

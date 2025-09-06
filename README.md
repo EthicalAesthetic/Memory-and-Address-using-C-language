@@ -404,7 +404,7 @@ Near pointer cannot access beyond the data segment like graphics video memory, t
 #include<stdio.h> 
 int main(){ 
 int x=25; 
-int near* ptr; 
+int near* ptr;  // * is used to declare pointer variable
 ptr=&x; 
 printf(“%d”,sizeof(ptr)); 
 return 0; 
@@ -447,9 +447,16 @@ return 0;
 
 <b>Explanation:</b> In the above program pointer `ptr` is declared as default pointer. Default storage class of pointer is near. So size of pointer `ptr` is 2 byte. Address of variable `i` is stored in the pointer `ptr`. Address of variable `i` is within 0x0000 to 0xFFFF.
 
+<img src="Resources/WhatsApp Image 2025-09-06 at 1.08.45 PM.jpeg">
+
 ### Note:
 1. Size of near pointer = 2 byte = size of int (in 16 bits compiler)
 2. Size of value at near pointer = size of int = 4 byte (in 32 bits compiler)
+
+# Logical structure of Computer Memory
+<img src="Resources/Screenshot 2025-09-06 132309.png">
+
+---
 
 <br><br>
 <footer>

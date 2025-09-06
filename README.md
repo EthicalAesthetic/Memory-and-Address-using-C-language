@@ -20,6 +20,9 @@ This repository contains C programs that demonstrate how memory and addresses wo
 - [9. Data types in c language](#9-data-types-in-c-language)
     - [Size of data types in c](#size-of-data-types-in-c)
     - [Range of data types in c](#range-of-data-types-in-c)
+- [10. Pointers](#10-pointers)
+- [11. Logical structure of Computer Memory](#11-logical-structure-of-computer-memory)
+
 
 
 
@@ -453,7 +456,7 @@ return 0;
 1. Size of near pointer = 2 byte = size of int (in 16 bits compiler)
 2. Size of value at near pointer = size of int = 4 byte (in 32 bits compiler)
 
-# Logical structure of Computer Memory
+# 11. Logical structure of Computer Memory
 <img src="Resources/Screenshot 2025-09-06 132309.png">
 
 ---
